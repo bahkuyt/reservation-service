@@ -15,7 +15,7 @@ pipeline {
         }
         stage ('Static Code Analysis'){
             steps{
-                sh 'mvn clean verify sonar:sonar -Dsonar.projectName=reservation-service -Dsonar.projectKey=reservation-service -Dsonar.projectVersion=$BUILD_NUMBER';
+                sh 'mvn clean verify sonar:sonar -Ddockerfile.skip -Dsonar.projectName=reservation-service -Dsonar.projectKey=reservation-service -Dsonar.projectVersion=$BUILD_NUMBER';
             }
 
         }
