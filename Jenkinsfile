@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Build And Publish Docker Container'){
             steps{
-                sh 'sudo mvn clean verify -Ddockerfile.push.skip';
+                sh 'sudo -t mvn clean verify -Ddockerfile.push.skip';
             }
         }
     }
