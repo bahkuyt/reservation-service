@@ -38,8 +38,7 @@ pipeline {
         }
         stage('Build And Publish Docker Container'){
             steps{
-                sh 'cd frontend';
-                sh 'mvn package dockerfile:build -Ddockerfile.push.skip';
+                sh 'mvn clean verify -Ddockerfile.push.skip';
             }
         }
     }
