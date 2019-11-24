@@ -38,7 +38,12 @@ pipeline {
         }
         stage('Build And Publish Docker Container'){
             steps{
-                sh 'sudo mvn clean verify';
+                sh 'sudo mvn clean verify -dskip.dockerfile.push';
+            }
+        }
+                stage('Run The Docker Container Locally'){
+            steps{
+                sh 'sudo docker run -p 5000:8090 bahkuyt/reservation-service:0.0.1-SNAPSHOT';
             }
         }
     }
