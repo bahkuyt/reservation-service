@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-        stage('Build And Publish Docker Container'){
+        stage('Build And Publish Docker Container.'){
             steps{
                 sh 'sudo mvn clean verify';
             }
