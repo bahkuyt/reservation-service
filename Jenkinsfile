@@ -19,13 +19,6 @@ pipeline {
             }
 
         }
-        stage ('Integration Test'){
-            steps{
-                sh 'mvn clean verify -DskipTests=false -Ddockerfile.skip';
-                junit '**/frontend/target/failsafe-reports/*.xml'
-                archive 'frontend/target/*.jar'
-            }
-
         }
         stage ('Publish'){
             steps{
