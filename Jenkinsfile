@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build And Unit Test') {
             steps{
-                sh 'mvn clean verify -DskipTests=false';
+                sh 'mvn clean verify -DskipTests=false -Ddockerfile.skip';
                 junit '**/frontend/target/surefire-reports/*.xml'
                 archive 'frontend/target/*.jar'
             }
@@ -21,7 +21,7 @@ pipeline {
         }
         stage ('Integration Test'){
             steps{
-                sh 'mvn clean verify -DskipTests=false';
+                sh 'mvn clean verify -DskipTests=false -Ddockerfile.skip';
                 junit '**/frontend/target/failsafe-reports/*.xml'
                 archive 'frontend/target/*.jar'
             }
@@ -47,7 +47,7 @@ pipeline {
         stage('Build And Publish Docker Container'){
             steps{
                 sh 'cd frontend';
-                sh 'mvn package dockerfile:build';
+                sh 'mvn package dockerfile:build -Ddockerfile.push.skip';
             }
         }
     }
