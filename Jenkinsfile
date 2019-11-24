@@ -43,7 +43,7 @@ pipeline {
         }
                 stage('Run The Docker Container Locally'){
             steps{
-                sh 'sudo docker run -p 5000:8090 bahkuyt/reservation-service:0.0.1-SNAPSHOT';
+                sh 'sudo docker run -p 5000:8090 bahkuyt/reservation-service:0.0.1-SNAPSHOT &';
             }
         }
     }
