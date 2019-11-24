@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Poll') {
             steps{
-                clean checkout scm
+                checkout scm
             }
         }
         stage('Build And Unit Test') {
